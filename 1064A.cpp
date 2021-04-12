@@ -13,6 +13,7 @@ int main() {
         cout << 0;
     }
     else{
+        // time to make arr[0] + arr[1] > arr[2]
         cout << arr[2] - arr[1] - arr[0] +1;
     }
 }
