@@ -21,16 +21,22 @@ int main(){
     
     int res{};
     for (int i=0;i< ss.size(); i++){
-        if (ss[i] == 'Q'){
-            for (int j=i; j< ss.size(); j++){
-                if (ss[j] == 'A'){
-                    for (int k=j; k< ss.size(); k++){
-                        if (ss[k] == 'Q'){
-                            res++;
-                        }
-                    }
-                }
+
+        // for every A, count Qs before & after it
+        // then Q_after * Q_before = possibilty that A is
+        // in the middle of 2 Qs
+        if (ss[i] == 'A'){
+            int Q_before{}, Q_after{};
+
+            for (int j = 0; j <i ; j++){
+                if (ss[j] == 'Q'){ Q_before++;}
             }
+
+            for (int j = i; j <ss.size() ; j++){
+                if (ss[j] == 'Q'){ Q_after++;}
+            }
+
+            res += Q_after*Q_before;
         }
     }
 
