@@ -5,19 +5,29 @@ int main(){
 
     int n,m;
     cin >>n >> m;
-    int a[n]; int b[m];
-    for (int i=0;i<n;i++){ cin >> a[i];}
-    for (int i=0;i<m;i++){ cin >> b[i];}
+    int min_accepted=1000;
+    int max_accepted=0;
+    int min_wrong=1000;
 
-    sort(a,a+n);
-    sort(b,b+m);
+    for (int i=0;i<n;i++){
+        int a;
+        cin >> a;
+        min_accepted = min(min_accepted, a);
+        max_accepted = max(max_accepted, a);
+    }
 
-    int v = a[n-1];
+    for (int i=0;i<m;i++){
+        int b;
+        cin >> b;
+        min_wrong = min(min_wrong, b);
+    }
 
-    // while v is less than the least wrong answer time
-    while(v < b[0]){
 
-        if ((2*a[0] <= v)){
+    int v = max_accepted;
+
+    while(v < min_wrong){
+
+        if ((2*min_accepted <= v)){
             cout << v;
             return 0;
         }
